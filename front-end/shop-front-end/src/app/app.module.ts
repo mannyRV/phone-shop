@@ -10,6 +10,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 
+// const routes: Routes = [
+//   { path: '', pathMatch: "full", redirectTo: 'login-form' },
+//   { path: 'product-list', pathMatch: "full", redirectTo: 'product-list/all' },
+//   { path: 'product-list/', component: ProductListComponent },
+//   { path: 'signup-form', component:  SignupComponent},
+//   { path: 'login-form', component: LoginComponent}
+// ];
 @NgModule({
   declarations: [
     AppComponent,
