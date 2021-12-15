@@ -18,6 +18,7 @@ public class Employee{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String email;
+    private String name;
     private String password;
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "emp_roles",foreignKey = @ForeignKey(name="employee_id"))

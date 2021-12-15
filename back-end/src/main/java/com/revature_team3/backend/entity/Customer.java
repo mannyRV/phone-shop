@@ -17,6 +17,7 @@ public class Customer{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String email;
+    private String name;
     private String password;
     private double balance;
     @ElementCollection(fetch = FetchType.EAGER)
