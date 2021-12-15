@@ -1,0 +1,6 @@
+
+product: Iphone 13 pro max 
+image-path: '../assets/iphone-13-pro-max.jpg'
+
+product: samsung s21 ultra
+image-path: '../assets/sg-s21-ultra.jpg'
