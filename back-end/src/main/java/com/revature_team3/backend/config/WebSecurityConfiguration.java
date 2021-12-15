@@ -1,7 +1,6 @@
 package com.revature_team3.backend.config;
 
-
-import com.revature_team3.backend.Auth.JwtRequestFilter;
+import com.revature_team3.backend.auth.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,9 +35,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .cors()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/phone-shop/login").permitAll()
-                .antMatchers("/phone-shop/shop").permitAll()
-                .antMatchers("/phone-shop/user-account").authenticated()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/register").permitAll()
+                .antMatchers("/account").authenticated()
+                .antMatchers("/cart").authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
@@ -47,9 +47,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
 
     @Bean
     protected AuthenticationManager authenticationManager() throws Exception {
