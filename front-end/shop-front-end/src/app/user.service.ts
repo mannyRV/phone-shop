@@ -44,7 +44,7 @@ export class UserService {
     formData.authorities = [
       'ROLE_USER'
     ]
-    this.httpClient.post("http://localhost:8080/api/users", formData)
+    this.httpClient.post("http://localhost:8080/phone-shop/customers", formData)
       .subscribe({
         next: (response: any) => {
           this.userStream.next({
