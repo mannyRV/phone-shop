@@ -38,11 +38,12 @@ export class EmployeeService {
       this.employeeName = decoded.sub;
     }
   }
+
   hire(formData: any) {
     formData.authorities = [
       'ROLE_EMPLOYEE'
     ]
-    this.httpClient.post("http://localhost:8080/api/employees", formData)
+    this.httpClient.post("http://localhost:8080/phone-shop/employees", formData)
       .subscribe({
         next: (response: any) => {
           this.employeeStream.next({
@@ -50,7 +51,7 @@ export class EmployeeService {
           })
         }
       })
-  }
+    }
 
   // fire(employeeId: number) {
   //   this.httpClient.delete("http://localhost:8080/api/employees/" + employeeId).subscribe({
@@ -58,7 +59,6 @@ export class EmployeeService {
   //       this.employeeStream = this.
   //     }
   //   })
-
   // }
 
   doLogout() {

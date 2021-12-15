@@ -16,7 +16,7 @@ export class ProductService {
   });
 
   getProducts(){
-    this.httpClient.get("http://localhost:8080/api/products")
+    this.httpClient.get("http://localhost:8080/phone-shop/products")
     .subscribe({
       next:(response:any)=>{
         this.products = response;
@@ -31,7 +31,7 @@ export class ProductService {
 
   addProduct(newProduct:any){
     return new Promise((resolve,reject) => {
-      this.httpClient.post("http://localhost:8080/api/products", {
+      this.httpClient.post("http://localhost:8080/phone-shop/products", {
         name: newProduct.name,
         type: newProduct.type
       }).subscribe({
@@ -50,7 +50,7 @@ export class ProductService {
 
   deleteProduct(productId: number) {
 
-    this.httpClient.delete("http://localhost:8080/api/products/" + productId).subscribe({
+    this.httpClient.delete("http://localhost:8080/phone-shop/products/" + productId).subscribe({
       next: e => {
         this.products = this.products.filter(product => product.id !== productId);
         this.productsStream.next({
