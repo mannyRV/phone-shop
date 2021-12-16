@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review,Integer> {
 
-    @Query("from Review r where r.shopProduct=product_id")
+    @Query("from Review r where r.shopProduct=:product_id")
     List<Review> getAllByProductId(int product_id);
 
 

@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ManagerRepository extends JpaRepository<Manager,Integer> {
 
-    @Query("from Manager m where m.email=email")
+    @Query("from Manager m where m.email=:email")
     Manager findByEmail(String email);
 }

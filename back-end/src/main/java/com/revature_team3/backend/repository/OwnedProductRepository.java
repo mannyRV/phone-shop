@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface OwnedProductRepository extends JpaRepository<OwnedProduct,Integer> {
 
-    @Query("from OwnedProduct o where o.customer.id=customer_id")
+    @Query("from OwnedProduct o where o.customer.id=:customer_id")
     List<OwnedProduct> findAllByUserId(int customer_id);
 
 }
