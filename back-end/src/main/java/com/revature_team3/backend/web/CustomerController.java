@@ -58,6 +58,8 @@ public class CustomerController {
         return ResponseEntity.status(201).body(customer);
     }
 
+
+    //NOT NEEDED IN FRONT-END
     @RequestMapping(
             method = RequestMethod.PUT,
             value = "/phone-shop/customers/{customerId}"
@@ -82,6 +84,8 @@ public class CustomerController {
         }
     }
 
+
+    //NOT NEEDED IN FRONT-END
     @RequestMapping(
             method = RequestMethod.DELETE,
             value = "/phone-shop/customers/{customerId}"

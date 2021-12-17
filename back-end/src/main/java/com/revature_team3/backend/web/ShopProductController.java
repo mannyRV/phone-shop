@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = {"*"})
 public class ShopProductController {
 
     @Autowired
@@ -57,9 +58,19 @@ public class ShopProductController {
             @PathVariable(name="productId") int productId,
             @RequestBody ShopProduct shopProduct
     ) {
-        shopProduct.setId(productId);
-        shopProduct=shopProductRepository.save(shopProduct);
-        return ResponseEntity.ok(shopProduct);
+        Optional<ShopProduct> oldProduct = shopProductRepository.findById(productId);
+        if (oldProduct.isEmpty()) {
+            throw new RuntimeException("Product cannot be found");
+        } else {
+            ShopProduct newProduct = oldProduct.get();
+            newProduct.setName(shopProduct.getName());
+            newProduct.setPrice(shopProduct.getPrice());
+            newProduct.setQuantity(shopProduct.getQuantity());
+            newProduct.setDescription(shopProduct.getDescription());
+            newProduct.setImage_path(shopProduct.getImage_path());
+            newProduct = shopProductRepository.save(newProduct);
+            return ResponseEntity.ok(newProduct);
+        }
     }
 
     @RequestMapping(
