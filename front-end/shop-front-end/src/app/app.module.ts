@@ -11,6 +11,8 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // const routes: Routes = [
 //   { path: '', pathMatch: "full", redirectTo: 'login-form' },
@@ -27,13 +29,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductComponent,
     NavbarComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

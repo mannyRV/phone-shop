@@ -8,7 +8,10 @@ import { UserService } from '../user.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { 
+  isLoggedIn:any =false;
+
+  constructor(private userService: UserService) { 
+    this.isLoggedIn = userService.isLoggedIn;
   }
 
   ngOnInit(): void {

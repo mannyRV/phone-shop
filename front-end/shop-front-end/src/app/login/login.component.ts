@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   handleSubmit(event: Event) {
     let credentials = this.loginForm.value;
-    this.userService.doLogin(credentials)
+    this.userService.doLogin(credentials);
   }
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) { }
@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
             console.log(e);
             this.message = "Login failed"
           }
-      
     }
   })
 }
