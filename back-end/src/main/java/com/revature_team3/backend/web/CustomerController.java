@@ -35,17 +35,12 @@ public class CustomerController {
 
     @RequestMapping(
             method = RequestMethod.GET,
-            value = "/phone-shop/customers/{customerId}",
+            value = "/phone-shop/customers/{customerEmail}",
             produces = {"application/json","application/xml"}
     )
-    public ResponseEntity<?> getById(@PathVariable(name = "customerId") int customerId) {
-        Optional<Customer> optionalCustomer = customerRepository.findById(customerId);
-        if (optionalCustomer.isEmpty()) {
-            return ResponseEntity.status(404).build();
-        }
-        else {
-            return ResponseEntity.ok(optionalCustomer.get());
-        }
+    public ResponseEntity<?> getByEmail(@PathVariable(name = "customerEmail") String customerEmail) {
+        Customer customer = customerRepository.findByEmail(customerEmail);
+        return ResponseEntity.ok(customer);
     }
 
     @RequestMapping(

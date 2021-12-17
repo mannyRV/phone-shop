@@ -1,5 +1,6 @@
 package com.revature_team3.backend.web;
 
+import com.revature_team3.backend.entity.Employee;
 import com.revature_team3.backend.entity.Manager;
 import com.revature_team3.backend.repository.ManagerRepository;
 import com.revature_team3.backend.service.UserService;
@@ -26,6 +27,16 @@ public class ManagerController {
     )
     public List getAllManagers() {
         return managerRepository.findAll();
+    }
+
+    @RequestMapping(
+            method = RequestMethod.GET,
+            value = "/phone-shop/managers/{managerEmail}",
+            produces = {"application/json","application/xml"}
+    )
+    public ResponseEntity<?> getByEmail(@PathVariable(name = "managerEmail") String managerEmail) {
+        Manager manager = managerRepository.findByEmail(managerEmail);
+        return ResponseEntity.ok(manager);
     }
 
     @RequestMapping(

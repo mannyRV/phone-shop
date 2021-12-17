@@ -1,5 +1,6 @@
 package com.revature_team3.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ public class Customer{
     private int id;
     private String email;
     private String name;
+    @JsonIgnore
     private String password;
     private double balance;
     @ElementCollection(fetch = FetchType.EAGER)

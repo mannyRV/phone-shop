@@ -1,5 +1,6 @@
 package com.revature_team3.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class Manager{
     private int id;
     private String email;
     private String name;
+    @JsonIgnore
     private String password;
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "man_roles",foreignKey = @ForeignKey(name="manager_id"))
