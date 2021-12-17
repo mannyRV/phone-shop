@@ -31,17 +31,12 @@ public class EmployeeController {
 
     @RequestMapping(
             method = RequestMethod.GET,
-            value = "/phone-shop/employees/{employeeId}",
+            value = "/phone-shop/employees/{employeeEmail}",
             produces = {"application/json","application/xml"}
     )
-    public ResponseEntity<?> getById(@PathVariable(name = "employeeId") int employeeId) {
-        Optional<Employee> optionalEmployee = employeeRepository.findById(employeeId);
-        if (optionalEmployee.isEmpty()) {
-            return ResponseEntity.status(404).build();
-        }
-        else {
-            return ResponseEntity.ok(optionalEmployee.get());
-        }
+    public ResponseEntity<?> getByEmail(@PathVariable(name = "employeeEmail") String employeeEmail) {
+        Employee employee = employeeRepository.findByEmail(employeeEmail);
+        return ResponseEntity.ok(employee);
     }
 
     @RequestMapping(
