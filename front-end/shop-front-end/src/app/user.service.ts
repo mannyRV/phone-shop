@@ -53,6 +53,7 @@ export class UserService {
         }
       })
   }
+  
   doLogout() {
     localStorage.removeItem('token')
     this.userStream.next({

@@ -27,13 +27,15 @@ export class LoginComponent implements OnInit {
     this.userService.userStream
       .subscribe({
         next: (e: any) => {
-          if (e.action === "LOGIN_SUCCESS")
-            this.router.navigate(["/todo-list/all"])
+          if (e.action === "LOGIN_SUCCESS"){
+            this.router.navigate(["/products"])
+            console.log("login success")}
           if (e.action === "LOGIN_FAILED") {
             console.log(e);
             this.message = "Login failed"
           }
-        }
-      })
-  }
+      
+    }
+  })
+}
 }
