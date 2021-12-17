@@ -5,12 +5,14 @@ import com.revature_team3.backend.repository.CustomerRepository;
 import com.revature_team3.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = {"*"})
 public class CustomerController {
 
     @Autowired
@@ -18,6 +20,9 @@ public class CustomerController {
 
     @Autowired
     private UserService customerService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @RequestMapping(
             method = RequestMethod.GET,
@@ -53,6 +58,8 @@ public class CustomerController {
         return ResponseEntity.status(201).body(customer);
     }
 
+
+    //NOT NEEDED IN FRONT-END
     @RequestMapping(
             method = RequestMethod.PUT,
             value = "/phone-shop/customers/{customerId}"
@@ -61,14 +68,27 @@ public class CustomerController {
             @PathVariable(name="customerId") int customerId,
             @RequestBody Customer customer
     ) {
-        customer.setId(customerId);
-        customer= (Customer) customerRepository.save(customer);
-        return ResponseEntity.ok(customer);
+        Optional<Customer> oldCustomer = customerRepository.findById(customerId);
+        if (oldCustomer.isEmpty()) {
+            throw new RuntimeException("User cannot be found");
+        } else {
+            Customer newCustomer = oldCustomer.get();
+            String bcryptHashString = passwordEncoder.encode(customer.getPassword());
+            newCustomer.setPassword(bcryptHashString);
+            newCustomer.setBalance(customer.getBalance());
+            newCustomer.setEmail(customer.getEmail());
+            newCustomer.setName(customer.getName());
+            newCustomer.setAuthorities(customer.getAuthorities());
+            newCustomer = customerRepository.save(newCustomer);
+            return ResponseEntity.ok(newCustomer);
+        }
     }
 
+
+    //NOT NEEDED IN FRONT-END
     @RequestMapping(
             method = RequestMethod.DELETE,
-            value = "/phone-shop/customer/{customerId}"
+            value = "/phone-shop/customers/{customerId}"
     )
     public ResponseEntity<?> deleteCustomer(@PathVariable(name="customerId") int customerId) {
         customerRepository.deleteById(customerId);

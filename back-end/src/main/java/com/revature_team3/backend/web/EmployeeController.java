@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = {"*"})
 public class EmployeeController {
 
     @Autowired
@@ -53,6 +54,7 @@ public class EmployeeController {
         return ResponseEntity.status(201).body(employee);
     }
 
+    //NOT NEEDED FOR FRONT_END
     @RequestMapping(
             method = RequestMethod.PUT,
             value = "/phone-shop/employees/{employeeId}"
@@ -68,7 +70,7 @@ public class EmployeeController {
 
     @RequestMapping(
             method = RequestMethod.DELETE,
-            value = "/phone-shop/employee/{employeeId}"
+            value = "/phone-shop/employees/{employeeId}"
     )
     public ResponseEntity<?> deleteEmployee(@PathVariable(name="employeeId") int employeeId) {
         employeeRepository.deleteById(employeeId);

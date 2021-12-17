@@ -42,7 +42,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             jwt = authorizationHeader.substring(7);
             username = jwtUtils.extractUsername(jwt);
         }
-
         try {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
@@ -51,12 +50,9 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             }
-        }catch (UsernameNotFoundException e){
-            e.printStackTrace();
-        }
-        finally {
             filterChain.doFilter(request, response);
+            } catch (UsernameNotFoundException e) {
+                filterChain.doFilter(request, response);
+            }
         }
-
     }
-}
