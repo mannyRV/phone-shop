@@ -14,13 +14,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-// const routes: Routes = [
-//   { path: '', pathMatch: "full", redirectTo: 'login-form' },
-//   { path: 'product-list', pathMatch: "full", redirectTo: 'product-list/all' },
-//   { path: 'product-list/', component: ProductListComponent },
-//   { path: 'signup-form', component:  SignupComponent},
-//   { path: 'login-form', component: LoginComponent}
-// ];
 @NgModule({
   declarations: [
     AppComponent,
