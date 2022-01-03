@@ -8,8 +8,8 @@ Mark Mitchell, Mansoor Musleh, Marion-Lawrenz Linguete, Mary-Christina
 Phone Shop
 
 ## DESCRIPTION:
-Phone shop is a full stack web application that uses Spring frameworks in its backend processes
-and Angular for its frontend processes. It is an e-commerce that allows users to buy phones and
+Phone shop is a full stack web application that uses Spring framework in its backend processes
+and Angular framework for its frontend processes. It is an e-commerce application that allows users to buy phones and
 phone-related products.
 
 ## REQUIREMENTS:
@@ -26,7 +26,7 @@ phone-related products.
 - Products should have an image, a description, and reviews
 - Users should be able to add product reviews only if they own the item
 
-TECHNOLOGIES:
+## TECHNOLOGIES:
 - Angular
    - Typescript, HTML, CSS
 - Spring frameworks (web, boot, jpa, security)
