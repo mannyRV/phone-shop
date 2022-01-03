@@ -1,15 +1,18 @@
-MEMBERS: 
+# Phone Shop Full Stack Application
+
+## MEMBERS: 
+
 Mark Mitchell, Mansoor Musleh, Marion-Lawrenz Linguete, Mary-Christina
 
-PROJECT:
+## PROJECT:
 Phone Shop
 
-DESCRIPTION:
+## DESCRIPTION:
 Phone shop is a full stack web application that uses Spring frameworks in its backend processes
 and Angular for its frontend processes. It is an e-commerce that allows users to buy phones and
 phone-related products.
 
-REQUIREMENTS:
+## REQUIREMENTS:
 - Users should be able to login
 - Customers should be able to register an account
 - Users should be able to see listed products
