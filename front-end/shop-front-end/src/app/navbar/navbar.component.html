@@ -26,9 +26,10 @@
         </div>
       </ng-container>
 
-      <ng-container *ngIf="isLoggedIn">
-               <button type="button" class="btn btn-outline-light mr-3" routerLinkActive="active" [routerLink]="['/shopping-cart']"> Shopping Cart </button>
-      </ng-container>
+       <ng-container *ngIf="isLoggedIn">
+               <button type="button" class="btn btn-primary mr-3" routerLinkActive="active" [routerLink]="['/shopping-cart']"> Shopping Cart</button>
+               <button type="button" class="btn btn-danger mr-3"  (click)="handleLogout()"> logout </button>
+       </ng-container>
 
     
     </div>
